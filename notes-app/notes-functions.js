@@ -10,16 +10,41 @@ const getSavedNotes = function () {
     }
 }
 
+// Remove a note from the list
+const removeNote = function (id) {
+    const noteIndex = notes.findIndex(function (note) {
+        return note.id === id
+    })
+
+    if (noteIndex > -1) {
+        notes.splice(noteIndex, 1)
+    }
+}
+
 // Generate the DOM structure for a note
 
 const generateNoteDOM = function (note) {
-    const noteL = document.createElement('p')
+    const noteL = document.createElement('div')
+    const textL = document.createElement('span')
+    const button = document.createElement('button')
 
+    // Setup the remove note button
+    button.textContent = 'x'
+    noteL.appendChild(button)
+    button.addEventListener('click', function () {
+        removeNote(note.id)
+        saveNotes(notes)
+        renderNotes(notes, filters)
+    })
+
+    // Setup the note title text
         if (note.title.length > 0) {
-            noteL.textContent = note.title
+            textL.textContent = note.title
         } else {
-            noteL.textContent = 'Unnamed note'
+            textL.textContent = 'Unnamed note'
         }
+
+        noteL.appendChild(textL)
 
         return noteL
 }

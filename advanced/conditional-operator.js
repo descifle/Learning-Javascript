@@ -2,7 +2,7 @@
 // const message = userAge >= 18? 'You can vote' : 'You cannot vote'
 // console.log(message)
 
-const myAge = 12
+const myAge = 24
 const showPage = () => {
     return 'Showing the page'
 }
@@ -27,3 +27,4 @@ const badTeam = () => {
 teamSize = team.length >= 4 ? badTeam() : goodTeam()
 
 console.log(teamSize)
+console.log(team.length <= 4 ? `Team size: ${team.length}` : `Too many people on your team`)

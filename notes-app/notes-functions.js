@@ -1,8 +1,14 @@
 // Read existing notes from localStorage
+'use strict'
 
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes')
-    return notesJSON ? JSON.parse(notesJSON) : []
+
+    try {
+        return notesJSON ? JSON.parse(notesJSON) : []
+    } catch (e) {
+        return []
+    }
 }
 
 // Remove a note from the list
@@ -91,7 +97,7 @@ const renderNotes = (notes, filters) => {
     })
 }
 
-saveNotes = (notes) => {
+const saveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
 }
 

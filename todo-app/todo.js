@@ -1,6 +1,6 @@
 // const p = document.querySelector('p')
 // p.remove()
-
+'use strict'
 let todos = getSavedTodos()
  
 const filters = {

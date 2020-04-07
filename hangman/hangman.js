@@ -22,7 +22,7 @@ class Hangman {
     }
 
     currentStatus() {
-        const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
+        const finished = this.word.every((letter) => this.guessedLetters.includes(letter) || letter === ' ')
 
         if (this.guesses === 0) {
             this.status = 'failed'
